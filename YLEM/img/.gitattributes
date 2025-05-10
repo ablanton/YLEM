@@ -1,6 +1,0 @@
-*.pnggit filter=lfs diff=lfs merge=lfs -text
-*.gif filter=lfs diff=lfs merge=lfs -text
-*.mp4git filter=lfs diff=lfs merge=lfs -text
-lfs filter=lfs diff=lfs merge=lfs -text
-track filter=lfs diff=lfs merge=lfs -text
-*.jpggit filter=lfs diff=lfs merge=lfs -text

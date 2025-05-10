@@ -6,14 +6,14 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://use.typekit.net/aof8ghh.css">
   <style>
-    body {
-      background-color: black;
-      color: white;
+     body {
+      background-color: #c8c8c8;
+      color: rgb(0, 0, 0);
     }
 
     .artist-name {
       font-family: "cherry-blossoms-regular", sans-serif;
-      font-size: 4em;
+      font-size: 5em;
       text-align: center;
       margin-top: 40px;
       margin-bottom: 40px;
@@ -37,38 +37,258 @@
       text-align: center;
       line-height: 1.5;
     }
+    
+    .image-caption-contained {
+      max-width: 800px;
+      margin: 20px auto 40px auto;
+      line-height: 1.8;
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    .top-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .lightbox-checkbox {
+      display: none;
+    }
+
+    .lightbox-label {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .lightbox-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+    
+    .lightbox-popup video {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+
+    .lightbox-checkbox:checked + .lightbox-popup {
+      display: flex;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+    
+    .back-button::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 18px;
+    }
   </style>
+  <script>
+    // Function to handle video playback
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all lightbox checkboxes
+      const lightboxCheckboxes = document.querySelectorAll('.lightbox-checkbox');
+      
+      // Add event listeners to each lightbox checkbox
+      lightboxCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          // Find the associated video
+          const lightboxId = this.id;
+          const popup = document.querySelector(`#${lightboxId} + .lightbox-popup`);
+          const video = popup ? popup.querySelector('video') : null;
+          
+          // If there's a video, play or pause it based on checkbox state
+          if (video) {
+            if (this.checked) {
+              video.play();
+            } else {
+              video.pause();
+              // Reset video to beginning
+              video.currentTime = 0;
+            }
+          }
+        });
+      });
+
+      // Add event listeners to close buttons
+      const closeButtons = document.querySelectorAll('.close-lightbox');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Find the associated checkbox and video
+          const popupContainer = this.closest('.lightbox-popup');
+          const checkbox = document.querySelector(`input[type="checkbox"] + .lightbox-popup`);
+          const video = popupContainer ? popupContainer.querySelector('video') : null;
+          
+          // If there's a video, pause it
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      });
+    });
+  </script>
 </head>
+
 <body>
 
 <div class="w3-container">
+  <a href="gallery.html" class="back-button">Back to Gallery</a>
+
   <div class="artist-name">Frank Pietronigro</div>
+  
+  <div class="top-image-container">
+    <label for="lightbox-1" class="lightbox-label" style="width: 100%; text-align: center;">
+      <img src="img/PietronegroThree.jpg" alt="Alan Rath" style="width:40%; max-width:400px; height:auto; object-fit:cover; margin: 0 auto;">
+    <input type="checkbox" id="lightbox-1" class="lightbox-checkbox" />
+    <div class="lightbox-popup">
+      <label for="lightbox-1" class="close-lightbox">&times;</label>
+      <img src="img/PietronegroThree.jpg" alt="Alan Rath">
+    </div>
+  </div>
+  
+  <div class="image-caption-contained">
+    <p><i></i>
+    <br>
+    </p>
+  </div>
 
   <div class="bio-text">
+    Frank Pietronigro
+    <br><br>
     Frank Pietronigro is what's known as an 'Artronaut' or an artist who uses space as their canvas. As truly invaluable asset to the art and technology community, Frank was the first American artist to create "drift paintings" where in a zero gravity space he would float weightlessly within a three dimensional moving painting, transcending the canvas and painting untethered to gravity aboard NASA's KC135 Turbojet (Vomit Comet). Frank used gravity as a medium and innovated the sensory experience that connects us to art.
     <br><br>
-    He is a pioneer, and a dedicated guide of art and technology's growing relationship. His dedicated originality is changing the way people see the medium, and will leave a lasting echo of inspiration for times to come.
+    He is a pioneer, and a dedicated guide of art and technology's growing relationship. His dedicated originality is changing the way people see the medium, and will leave a lasting echo of inspiration for times to come. 
   </div>
 
-  <div class="w3-row-padding image-gallery w3-center">
+  <div class="w3-row-padding image-gallery w3-center" style="max-width: 900px; margin: 40px auto;">
     <div class="w3-half">
-      <img src="img/PietronigroOne.jpeg" alt="Drift Painting" style="width:50%;object-fit:cover;">
+      <label for="lightbox-2" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/PietronigroOne.jpeg" alt="Beverly Kleiber" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-2" class="close-lightbox">&times;</label>
+        <img src="img/PietronigroOne.jpeg" alt="Beverly Kleiber">
+      </div>
       <div class="image-caption">
-        Drift Painting in<br>
-        0 Gravity
+        <p><i>Drift Painting in 0 Gravity</i>
+        <br>
+        </p>
+        <br>
       </div>
     </div>
-    <div class="w3-half">
-      <img src="img/PietronigroTwo.png" alt="YLEM Excerpt" style="width:50%;object-fit:cover;">
+   
+    <div class="w3-half" style="padding: 0 10px;">
+      <label for="lightbox-pallas2" class="lightbox-label">
+        <img src="img/PietronigroTwo.png" alt="Drift Painting" style="width:70%; object-fit:cover;">
+      </label>
+      <input type="checkbox" id="lightbox-pallas2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-pallas2" class="close-lightbox">&times;</label>
+        <video controls autoplay muted>
+          <source src="img/PIETRONIGRO NEW.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div class="image-caption">
-        Frank Pietronigro<br>
-        excerpt from "Ylem<br>
-        as I knew it in the<br>
-        1990's" MP4 movie
+        <p>Frank Pietronigro
+        <br>
+        Excerpt from "Ylem as I knew it in the 1990's" MP4 Movie
+        <br>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- <div class="w3-row-padding image-gallery w3-center">
+    
+    <div class="w3-half">
+      <label for="lightbox-2" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/PietronigroOne.jpeg" alt="Beverly Kleiber" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-2" class="close-lightbox">&times;</label>
+        <img src="img/PietronigroOne.jpeg" alt="Beverly Kleiber">
+      </div>
+      <div class="image-caption">
+        <p><i>Drift Painting in 0 Gravity</i>
+        <br>
+        </p>
+        <br>
+      </div>
+    </div>
+
+    <div class="w3-half">
+      <label for="lightbox-3" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/PietronigroTwo.png" alt="Beverly Kleiber" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-3" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-3" class="close-lightbox">&times;</label>
+        <img src="img/PietronigroTwo.png" alt="Beverly Kleiber">
+      </div>
+      <div class="image-caption">
+        <p>Frank Pietronigro
+        <br>
+        Excerpt from "Ylem as I knew it in the 1990's" MP4 Movie
+        <br>
+      
+       
+      </p>
+      </div>
+    </div>
+  </div>
+</div> -->
 
 </body>
 </html>
+
+

@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://use.typekit.net/aof8ghh.css">
   <style>
     body {
-      background-color: black;
-      color: white;
+      background-color: #c8c8c8;
+      color: rgb(0, 0, 0);
       font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
     }
     .top-image {
@@ -44,11 +44,40 @@
       margin-bottom: 10px;
       text-decoration: none;
     }
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+    
+    .back-button::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
 
   <div class="w3-container w3-center">
+    <a href="index.html" class="back-button">Back to Gallery</a>
     <img src="img/banner.png" alt="Top Image" class="top-image">
   </div>
 

@@ -6,14 +6,14 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://use.typekit.net/aof8ghh.css">
   <style>
-    body {
-      background-color: black;
-      color: white;
+     body {
+      background-color: #c8c8c8;
+      color: rgb(0, 0, 0);
     }
 
     .artist-name {
       font-family: "cherry-blossoms-regular", sans-serif;
-      font-size: 4em;
+      font-size: 5em;
       text-align: center;
       margin-top: 40px;
       margin-bottom: 40px;
@@ -37,38 +37,217 @@
       text-align: center;
       line-height: 1.5;
     }
+    
+    .image-caption-contained {
+      max-width: 800px;
+      margin: 20px auto 40px auto;
+      line-height: 1.8;
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    .top-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .lightbox-checkbox {
+      display: none;
+    }
+
+    .lightbox-label {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .lightbox-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+    
+    .lightbox-popup video {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+
+    .lightbox-checkbox:checked + .lightbox-popup {
+      display: flex;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+    
+    .back-button::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 18px;
+    }
   </style>
+  <script>
+    // Function to handle video playback
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all lightbox checkboxes
+      const lightboxCheckboxes = document.querySelectorAll('.lightbox-checkbox');
+      
+      // Add event listeners to each lightbox checkbox
+      lightboxCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          // Find the associated video
+          const lightboxId = this.id;
+          const popup = document.querySelector(`#${lightboxId} + .lightbox-popup`);
+          const video = popup ? popup.querySelector('video') : null;
+          
+          // If there's a video, play or pause it based on checkbox state
+          if (video) {
+            if (this.checked) {
+              video.play();
+            } else {
+              video.pause();
+              // Reset video to beginning
+              video.currentTime = 0;
+            }
+          }
+        });
+      });
+
+      // Add event listeners to close buttons
+      const closeButtons = document.querySelectorAll('.close-lightbox');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Find the associated checkbox and video
+          const popupContainer = this.closest('.lightbox-popup');
+          const checkbox = document.querySelector(`input[type="checkbox"] + .lightbox-popup`);
+          const video = popupContainer ? popupContainer.querySelector('video') : null;
+          
+          // If there's a video, pause it
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      });
+    });
+  </script>
 </head>
+
 <body>
 
 <div class="w3-container">
+  <a href="gallery.html" class="back-button">Back to Gallery</a>
   <div class="artist-name">Roman Verostko</div>
+  <div class="top-image-container">
+    <label for="lightbox-1" class="lightbox-label" style="width: 100%; text-align: center;">
+      <img src="img/UTM-Manchester-22-w.jpg" alt="Alan Rath" style="width:40%; max-width:400px; height:auto; object-fit:cover; margin: 0 auto;">
+    </label>
+    <input type="checkbox" id="lightbox-1" class="lightbox-checkbox" />
+    <div class="lightbox-popup">
+      <label for="lightbox-1" class="close-lightbox">&times;</label>
+      <img src="img/UTM-Manchester-22-w.jpg" alt="Alan Rath">
+    </div>
+  </div>
+  <div class="image-caption">
+    <p><i>Manchester Illuminated Universal Turing Machine, #23 </i>, 1998
+    <br>
+    Pen Plotted drawing with gold leaf
+    <br>
+    30 x 22 in
+    </p>
+    <br>
+  </div>
 
   <div class="bio-text">
-    Louis M. Brill was a multifaceted self-taught media artist and prolific writer who made significant contributions to various forms of media and art – in particular, holography, and the art of light. Brill created Lumia projections, which he described as slow, undulating movements of light forms that shift from one image to another. He often paired these visual projections with music to create a more immersive experience. As a writer, he contributed over 50 articles to Signs of the Times magazine between 1992 and 2017, documenting spectacular signage in cities like New York and Las Vegas. Drawn to experimental and interactive light forms, Brill was also recognized as one of the 80 Burning Man founders who helped bring the festival to its current location in the Black Rock Desert of Nevada.
+    Roman Verostko
+    <br>
+    (1929 - 2024)
     <br>
     <br>
-    In his own words, Brill stated: "Lighting and visual effects have always fascinated me as a window to a fantastical vista of destinations, landscapes and abstract places whose spaces begged to be visited. My own efforts in this realm began in the 1970s as a student-practitioner of New York City's high-tech ghetto of that era embracing the emerging visual effect art mediums of the day. As a self-taught student of multi-media artist, I zigzagged between video tech, multi-image, photography, kinetic art and fine art holography."
+    Roman Verostko, was a leading visionary at the intersection of Art and Technology. He transformed the landscape of digital creativity through his pioneering work in algorithmic art.  During the years (particularly between 1963 and 1968) when he was a Benedictine monk, Verostko struggled with what he termed "visual oppositions that complemented and created each other in a visual dialectic.  The visual dialectic in my artwork echoed my personal struggle to reconcile the believable and the unbelievable in my spiritual life," (Verostko, 2015). By 1967, Verostko had begun experimenting with emerging new media with a focus on electronics. This interest led him to create electronically synchronized audio-visual programs featuring projection of evocative texts with drawings & images and soundtracks.    <br>
+    <br>
+    Verostko's transformation into an 'artist programmer' represents a unique synthesis of his deep studies into language, philosophy, theology and spirituality – all of which provided a profound philosophical dimension to his art. He was able to seamlessly blend the precision of writing code with the fusion of spiritual inquiry and technological innovation that projected him into the forefront of computer-generated art, as he perfected his own custom-built software "Hodos". Over a decade Verostko converted his studio into what he called an "electronic scriptorium", complete with computers and drawing machines known as "pen plotters" that wielded oriental brushes. The algorithms that Verostko created guided his 'pen plotters' to generate drawings unlike anything he had ever seen. Thanks to the computer, he crafted a pathway that opened up new frontiers of form that uniquely informed his experimental process of writing computer code for creative purposes.
     <br>
     <br>
-    Brill developed a distinctive approach to Lumia using light as his primary medium of expression. He manipulated light to create textured, smoke-like visuals that he described as "very evocative" and capable of presenting a "narrative visual presence". Brill's Lumia compositions often evoked mysterious, fantastical landscapes and abstract forms. Through controlled artistry and imaginative Interpretation, Brill emphasized the ability to control and manipulate Lumia through "directed artistic intentions," highlighting the deliberate nature of his creations. His artistic philosophy is reflected in another statement he made about Lumia projections: "Often to extend the visual presence of animated Lumia a musical track accompanies the Lumia motion which is no different than adding a musical score to a film. When music is played with a Lumia composition, it adds a narrative, emotional and dynamic presence to the abstract moving light as the mind attempts to synchronize the sound and visuals being presented".
+    Verostko's legacy as a co-founder of the Algorists helped create a shared identity for artists who used their own algorithms to generate their art, distinguishing their practice from those who used pre-existing software – thus solidifying the importance of code as a creative medium in its own right. Verostko's contributions to the field of generative art have left an indelible mark on the art World.  His distinctive body of work remains a unique guiding force for future artists, encouraging them to delve into the limitless potential of computer-generated creativity. This reinforces Verostko's standing as a true giant at the crossroads of programming and artistic expression.
     <br>
     <br>
-    Brill's work challenged viewers' perceptions, often defying immediate understanding and stretching the imagination. Brill likened the experience to a "Rorschach moment," where the viewer's worldview became integral to appreciating the Lumia lightscape. His Lumia creations are portals to other worldly realms, inviting us into "visual gateways to another dimension" filled with "illuminated photonic hill and dale".
+    
   </div>
 
   <div class="w3-row-padding image-gallery w3-center">
     <div class="w3-half">
-      <img src="img/VerostkoOne.jpg" alt="Roman Verostko" style="width:50%;object-fit:cover;">
+      <label for="lightbox-2" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/VerostkoOne.jpg" alt="Alan Rath" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-2" class="close-lightbox">&times;</label>
+        <img src="img/VerostkoOne.jpg" alt="Alan Rath">
+      </div>
       <div class="image-caption">
-        Exe Lungshan<br>
+        <p><i>Exe Lungshan</i></p>
       </div>
     </div>
+    
     <div class="w3-half">
-      <img src="img/VerostkoTwo.jpg" alt="Roman Verostko" style="width:50%;object-fit:cover;">
+      <label for="lightbox-3" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/VerostkoTwo.jpg" alt="Roman Verostko" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-3" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-3" class="close-lightbox">&times;</label>
+        <video id="verostko-video" controls>
+          <source src="img/VEROSTKO NEW.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div class="image-caption">
-        Roman Verostko<br>
-        <br>
+        <p>Roman Verostko</p>
       </div>
     </div>
   </div>

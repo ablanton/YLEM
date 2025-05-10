@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jody Gillerman - YLEM</title>
+  <title>Frank Pietronigro - YLEM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://use.typekit.net/aof8ghh.css">
   <style>
-    body {
-      background-color: black;
-      color: white;
+     body {
+      background-color: #c8c8c8;
+      color: rgb(0, 0, 0);
     }
 
     .artist-name {
       font-family: "cherry-blossoms-regular", sans-serif;
-      font-size: 4em;
+      font-size: 5em;
       text-align: center;
       margin-top: 40px;
       margin-bottom: 40px;
@@ -37,11 +37,149 @@
       text-align: center;
       line-height: 1.5;
     }
+    
+    .image-caption-contained {
+      max-width: 800px;
+      margin: 20px auto 40px auto;
+      line-height: 1.8;
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    .top-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .lightbox-checkbox {
+      display: none;
+    }
+
+    .lightbox-label {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .lightbox-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+    
+    .lightbox-popup video {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+
+    .lightbox-checkbox:checked + .lightbox-popup {
+      display: flex;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+    
+    .back-button::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 18px;
+    }
   </style>
+  <script>
+    // Function to handle video playback
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all lightbox checkboxes
+      const lightboxCheckboxes = document.querySelectorAll('.lightbox-checkbox');
+      
+      // Add event listeners to each lightbox checkbox
+      lightboxCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          // Find the associated video
+          const lightboxId = this.id;
+          const popup = document.querySelector(`#${lightboxId} + .lightbox-popup`);
+          const video = popup ? popup.querySelector('video') : null;
+          
+          // If there's a video, play or pause it based on checkbox state
+          if (video) {
+            if (this.checked) {
+              video.play();
+            } else {
+              video.pause();
+              // Reset video to beginning
+              video.currentTime = 0;
+            }
+          }
+        });
+      });
+
+      // Add event listeners to close buttons
+      const closeButtons = document.querySelectorAll('.close-lightbox');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Find the associated checkbox and video
+          const popupContainer = this.closest('.lightbox-popup');
+          const checkbox = document.querySelector(`input[type="checkbox"] + .lightbox-popup`);
+          const video = popupContainer ? popupContainer.querySelector('video') : null;
+          
+          // If there's a video, pause it
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 
 <div class="w3-container">
+  <a href="gallery.html" class="back-button">Back to Gallery</a>
   <div class="artist-name">Jody Gillerman</div>
 
   <div class="bio-text">
@@ -54,7 +192,14 @@
 
   <div class="w3-row-padding image-gallery w3-center">
     <div class="w3-half">
-      <img src="img/GillermanOne.jpg" alt="Drift Painting" style="width:50%;object-fit:cover;">
+      <label for="lightbox-2" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/GillermanOne.jpg" alt="Alan Rath" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-2" class="close-lightbox">&times;</label>
+        <img src="img/GillermanOne.jpg" alt="Alan Rath">
+      </div>
       <div class="image-caption">
         Immersive Total Solar<br>
         Eclipse Project<br>
@@ -63,7 +208,17 @@
       </div>
     </div>
     <div class="w3-half">
-      <img src="img/GillermanTwo.png" alt="YLEM Excerpt" style="width:50%;object-fit:cover;">
+      <label for="lightbox-gillerman2" class="lightbox-label">
+        <img src="img/GillermanTwo.png" alt="Drift Painting" style="width:70%; object-fit:cover;">
+      </label>
+      <input type="checkbox" id="lightbox-gillerman2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-gillerman2" class="close-lightbox">&times;</label>
+        <video controls autoplay muted>
+          <source src="img/YLEM Jody Gillerman.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div class="image-caption">
       excerpt from<br>
       YLEM as I knew it in the 1990's<br>
