@@ -129,6 +129,17 @@
       margin-right: 8px;
       font-size: 18px;
     }
+    .video-link {
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+  cursor: pointer;
+  font-style: italic;
+  display: inline;
+}
+
+.video-link:hover {
+  color: #444;
+}
   </style>
   <script>
     // Function to handle video playback
@@ -209,6 +220,14 @@
 
   <div class="bio-text">
     Beverly Kleiber aka Reiser
+    <input type="checkbox" id="lightbox-video" class="lightbox-checkbox" />
+    <div class="lightbox-popup">
+      <label for="lightbox-video" class="close-lightbox">&times;</label>
+      <video controls>
+        <source src="img/Roman_Speaks.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <br><br>
     As a pioneer in the field of Electronic Art, Beverly Kleiber (aka Beverly Reiser) was at the forefront of the exploration of new technologies creating immersive and engaging poetic experiences,
  As an early adopter, Kleiber's artistic journey is characterized by her embrace of digital media and her ability to push the boundaries of interactive art. Her work in the 1990s was on the cusp of electronic art that was just beginning to take shape, allowing her to contribute significantly to the development and evolution of these nascent art forms.
@@ -231,7 +250,7 @@ Kleiber's early work included sculptures incorporating neon, sandblasted mirrors
 <br><br>
 At her core, Beverly was a playful instigator living and working on the cusp of new paradigms in Art and technology.
 <br><br>
-<a href="">Roman Verostka sums up Beverly's life in 2 min. 8sec</a>
+<label for="lightbox-video" class="video-link">Roman Verostka sums up Beverly's life in 2 min. 8sec</label>
   </div>
 
   <div class="w3-row-padding image-gallery w3-center">
@@ -245,13 +264,9 @@ At her core, Beverly was a playful instigator living and working on the cusp of 
         <img src="img/BK & Roman .jpg" alt="Beverly Kleiber">
       </div>
       <div class="image-caption">
-        <p><i>Moist</i>, 1994
+        <p><b>YLEM as I saw it in the 1990s</b>
         <br>
-        Aluminum, custom electronics, CRT
-        <br>
-        15 x 9 x 28 in
-        <br>
-        38.1 x 22.9 x 71.1 cm
+        
         </p>
         <br>
       </div>
@@ -266,11 +281,11 @@ At her core, Beverly was a playful instigator living and working on the cusp of 
         <img src="img/Voice Garden poster.jpg" alt="Beverly Kleiber">
       </div>
       <div class="image-caption">
-        <p><i>Voice Garden: Labyrinth of Love, Labryinth of Desire</i>, 1995
+        <p><i><b>Voice Garden: Labyrinth of Love, Labryinth of Desire</i></b>, 1995
         <br>
         Video, interactive CD-ROM
         <br>
-        Music by Bill Fleming
+        Hans Reiser and Beverly Reiser, still from Voice Garden: Labyrinth of Love, Labyrinth of Desire,<br> an interactive CD-ROM with music by Bill Fleming 
        
       </p>
       </div>
