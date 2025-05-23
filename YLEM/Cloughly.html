@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will Cloughly - YLEM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://use.typekit.net/aof8ghh.css">
+  <style>
+     body {
+      background-color: #c8c8c8;
+      color: rgb(0, 0, 0);
+    }
+
+
+    .artist-name {
+      font-family: "cherry-blossoms-regular", sans-serif;
+      font-size: 4em;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .bio-text {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      padding: 20px;
+      text-align: justify;
+      margin-bottom: 40px;
+    }
+
+    .image-gallery {
+      margin: 40px 0;
+    }
+
+    .image-caption {
+      margin-top: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+    
+    .top-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .lightbox-checkbox {
+      display: none;
+    }
+
+    .lightbox-label {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .lightbox-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+
+    .lightbox-checkbox:checked + .lightbox-popup {
+      display: flex;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+    
+    .back-button::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .bottom-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="w3-container">
+  <a href="gallery.html" class="back-button">Back to Gallery</a>
+    
+  <div class="artist-name">Will Cloughly</div>
+
+  <div class="bio-text">
+    Will Cloughly
+    <br>
+    (1938-2019)
+    <br>
+    <br>
+    Will Cloughly was a San Francisco-based mixed media artist, writer, and educator whose work explored the dynamic intersections of art, science, spirituality, and technology. His diverse practice included essays, poetry, artist&#39;s books, mixed media drawings, and immersive slide animations, all unified by a deep inquiry into humanity&#39;s relationship with nature, the cosmos, and itself.
+    <br><br>
+    <div class="w3-half">
+      <label for="lightbox-2" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/Cloughly2.jpeg" alt="Will Cloughley" style="width:60%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-2" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-2" class="close-lightbox">&times;</label>
+        <img src="img/Cloughly2.jpeg" alt="Will Cloughly">
+      </div>
+      <div class="image-caption">
+        <p><i><b>Box Collage series</b></i>, 2006
+        <br>
+        Mixed media, paper, black sketchbooks
+        <br>
+        </p>
+        <br>
+      </div>
+      </div>
+    Cloughley&#39;s academic journey was rooted in both literary and artistic traditions. He earned his Master of Fine Arts degree from the prestigious Iowa Writers&#39; Workshop, a program renowned for shaping some of the most influential voices in contemporary literature. This literary background heavily informed his visual art, giving it a lyrical and philosophical character that set his work apart. In addition to his personal practice, Cloughley dedicated time to teaching, notably at the San Francisco Center for the Book, where he mentored a new generation of artists and writers in the delicate art of bookmaking and mixed media expression.
+    <br><br>
+    Thematically, Cloughley&#39;s work revolved around cycles—natural, cosmological, and human. He explored subjects such as archaeology, astronomy, cosmology, mysticism, and philosophy, often visualizing the tension and harmony between geometric and organic forms. He had a keen interest in the way technology impacts the environment and how history, both personal and collective, leaves its mark on landscapes. These concerns found vivid expression in many of his projects, where layered symbolism and abstract motifs invited viewers to engage in intuitive and emotional exploration.
+    <br><br>
+    One of his most celebrated projects, <i>Red Rock Black Sun</i>, exemplifies Cloughley&#39;s interdisciplinary approach. Fusing sculpture, book art, and video installation, the project delved into the mystical and philosophical qualities of the American Southwest. Through this work, he meditated on the spiritual resonance of the desert landscape, creating a bridge between ancient indigenous histories and contemporary existential questions. The innovation and depth of <i>Red Rock Black Sun</i> earned him recognition as one of SF Weekly&#39;s “Masterminds” in 2011, a distinction that highlighted his role as a significant cultural figure in the Bay Area arts community.
+    <br><br>
+    Cloughley&#39;s body of work frequently addressed contemporary issues, such as electromagnetic pollution and the broader consequences of technological advancement. However, his critique was never didactic; instead, he used art as a form of open-ended inquiry, encouraging viewers to reflect on their own place within these larger forces. His installations often combined scientific concepts with poetic imagery, demonstrating that art and science are not opposing disciplines but rather complementary ways of understanding existence.
+    <br><br>
+    Throughout his career, Cloughley maintained a commitment to craftsmanship and a love for materials. His artist&#39;s books, often created in limited editions, reveal a tactile sensitivity and a reverence for the physicality of storytelling. He was fascinated by the ways in which words and images could be woven together to create layered narratives, much like geological strata, each layer offering a new way of seeing.
+    <br><br>
+    Beyond his art-making, Cloughley&#39;s influence extended into the broader cultural community. He was an advocate for interdisciplinary collaboration and believed strongly in the power of art to foster conversation across fields and between people. His legacy lives on not just in his own body of work, but in the many artists and writers he inspired throughout his life.
+    <br><br>
+    Will Cloughley&#39;s contributions to contemporary art and literature were characterized by a rare blending of scientific curiosity, spiritual depth, and aesthetic innovation. His work invites ongoing engagement with the mysteries of the natural world, the histories that shape us, and the futures we are creating. Though he passed away in 2019, his vision continues to resonate with those drawn to art that challenges, enlightens, and ultimately transforms.
+  </div>
+
+  <div class="bottom-image-container">
+    
+    <div class="w3-half">
+      <label for="lightbox-3" class="lightbox-label" style="width: 100%; text-align: center;">
+        <img src="img/Cloughley3.jpg" alt="Will Cloughly" style="width:50%; object-fit:cover; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-3" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-3" class="close-lightbox">&times;</label>
+        <img src="img/Cloughley3.jpg" alt="Will Cloughly">
+      </div>
+      <div class="image-caption">
+        <p><i><b>Original drawing #7 - RED ROCK, BLACK SUN series</b></i>, 207
+        <br>
+        Ink & prismacolor on paper
+        <br>
+        13.5 x 17 in
+        <br>
+      </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
