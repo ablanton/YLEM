@@ -19,6 +19,13 @@
       display: block;
       margin: 40px auto 40px auto;
     }
+    .image-caption-contained {
+      max-width: 800px;
+      margin: 20px auto 20px auto;
+      line-height: 1.8;
+      padding: 0 20px;
+      text-align: center;
+    }
     .bottom-image {
       width: 300px;
       height: 300px;
@@ -44,13 +51,153 @@
       font-style: normal;
       font-size: 6em;
       font-weight: 10;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
       text-decoration: none;
     }
     .my-image {
   margin-left: 0px;  /* Move right */
   margin-right: 1000px; /* Add space on right */
 }
+.lightbox-checkbox {
+      display: none;
+    }
+
+    .lightbox-label {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .lightbox-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+    
+    .lightbox-popup video {
+      max-width: 90%;
+      max-height: 80%;
+      border: 4px solid white;
+    }
+
+    .lightbox-checkbox:checked + .lightbox-popup {
+      display: flex;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .bottom-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      text-align: center ;
+    }
+    
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+    }
+    
+    .back-button::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 18px;
+    }
+    .video-link {
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+  cursor: pointer;
+  font-style: italic;
+  display: inline;
+}
+
+.video-link:hover {
+  color: #444;
+}
+  </style>
+  <script>
+    // Function to handle video playback
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all lightbox checkboxes
+      const lightboxCheckboxes = document.querySelectorAll('.lightbox-checkbox');
+      
+      // Add event listeners to each lightbox checkbox
+      lightboxCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          // Find the associated video
+          const lightboxId = this.id;
+          const popup = document.querySelector(`#${lightboxId} + .lightbox-popup`);
+          const video = popup ? popup.querySelector('video') : null;
+          
+          // If there's a video, play or pause it based on checkbox state
+          if (video) {
+            if (this.checked) {
+              video.play();
+            } else {
+              video.pause();
+              // Reset video to beginning
+              video.currentTime = 0;
+            }
+          }
+        });
+      });
+
+      // Add event listeners to close buttons
+      const closeButtons = document.querySelectorAll('.close-lightbox');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Find the associated checkbox and video
+          const popupContainer = this.closest('.lightbox-popup');
+          const checkbox = document.querySelector(`input[type="checkbox"] + .lightbox-popup`);
+          const video = popupContainer ? popupContainer.querySelector('video') : null;
+          
+          // If there's a video, pause it
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      });
+    });
+  </script>
   </style>
 </head>
 <body>
@@ -86,7 +233,7 @@
       <br>
       <img src="img/BKheadshot.jpg" alt="Description of image" class="my-image" style="width: 250px">
       <p class="paragraph">Among these, <b>Beverly Kleiber</b> aka <b>Reiser</b> emerged as a key figure in interactive installations—often immersive and user-responsive—reflected a profound interest in memory, identity, and perception. Using CD-ROM technology and early interactive video platforms, Kleiber aka Reiser developed nonlinear storytelling environments that placed the viewer at the center of a shifting, fragmented narrative.</p>
-
+        <img src="img/LB_headshot.png" alt="Description of image" class="my-image" style="width: 250px">
       <p class="paragraph">The 1990s also saw contributions from figures whose work intersected with the scientific and technological dimensions of art in diverse ways. <b>Louis Brill</b>, a media writer and consultant, chronicled and contextualized much of the emerging digital art scene, helping to frame its discourse.</p>
       <br>
       <img src="img/LH_headshot.jpg" alt="Description of image" class="my-image" style="width: 250px">
@@ -119,12 +266,35 @@
       <p class="paragraph"><b>Beverly Kleiber aka Reiser</b></p>
       <p class="paragraph">May 2025</p>
     </p>
-    <p class="paragraph">
-      
-    </p>
+   
 
-    <img src="img/gallery_link.jpg" alt="Bottom Image" class="w3-image w3-padding-16" style="width:80%; max-width:200px">
-  </div>
+   </div>
+
+   <div class="image-caption-contained">  
+    <label for="lightbox-3" class="lightbox-label" style="width: 100%; text-align: center;">
+      <img src="img/ylem-title-image-bev.jpg" alt="Beverly Kleiber" style="width:80%; max-width:600px; height:auto; object-fit:cover; margin: 0 auto; cursor: pointer;">
+      </label>
+      <input type="checkbox" id="lightbox-3" class="lightbox-checkbox" />
+      <div class="lightbox-popup">
+        <label for="lightbox-3" class="close-lightbox">&times;</label>
+         <video id="main-video" controls>
+         <source src="img/ylem_as_i_saw_it_in_the_1990s_VID.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+      </div>
+      </div>
+      <div class="image-caption-contained">
+        (Click image above)
+        <br>
+        <b>"YLEM as I saw it in the 1990s"</b>
+        <br>
+        20 min movie describing YLEM
+        <br>
+        with profiles of six artists
+      </div>
+    
+      
+ 
   
 </body>
 </html>
