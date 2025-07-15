@@ -1,0 +1,104 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+    background-color: #f1f1f1;
+    display: inline;
+    padding: 0.1em 0.2em;
+}
+
+#main-header h1 {
+    margin: 0;
+    line-height: 1;
+}
+
+#main-header .w3-jumbo span {
+    background-color: #f1f1f1;
+    display: inline;
+    padding: 0.1em 0.2em;
+}
+
+#main-header .w3-jumbo .title-line-1 {
+    position: relative;
+    padding-bottom: 0.5em;
+}
+
+#main-header .w3-jumbo .title-line-1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0.2em;
+    width: 100%;
+    /* border-bottom: 2px solid #3d3d3d; */
+}
+
+.divider-container {
+    padding: 0;
+    margin: 10px 300px 0px -10px;
+}
+
+.divider-line {
+    height: 1px;
+    background-color: #3d3d3d;
+    position: relative;
+    z-index: 1;
+}
+
+.artist-card {
+    transition: transform 0.3s;
+    
+}
+.artist-card:hover {
+    transform: scale(1.02);
+}
+
+.tile-margin {
+    margin: 4px;
+}
+
+.artist-grid {
+    column-count: 3;
+    column-gap: 16px;
+    padding: 16px;
+}
+
+@media (max-width: 800px) {
+    .artist-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .artist-grid {
+        column-count: 1;
+    }
+}
+
+.artist-grid > div {
+    break-inside: avoid;
+    margin-bottom: 28px;
+}
+
+.artist-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#main-header {
+    padding-left: 60px;
+    margin-bottom: 24px;
+    padding-bottom: 32px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#main-header a, #main-header a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.w3-container, .w3-panel {
+    padding: 0.01em 26px;
+} 
