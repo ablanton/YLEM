@@ -5,38 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        .artist-card {
-            transition: transform 0.3s;
-            
-        }
-        .artist-card:hover {
-            transform: scale(1.02);
-        }
-        
-        .tile-margin {
-            margin: 4px;
-        }
-
-        .artist-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            column-gap: 16px; /* uniform space between all items */
-            row-gap: 8px;
-            padding: 16px; /* optional, for space around grid */
-        }
-        .artist-card img {
-            display: block;
-            width: 100%;
-            height: auto;
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- Header -->
-<header class="w3-container w3-padding-32 w3-white">
-    <h1>Seeding The Frontier</h1>
+<header id="main-header" class="w3-container w3-padding-32 w3-white">
+    <a href="index.html">
+        <h1 class="w3-jumbo">
+            <span><i>seeding the</i></span>
+        </h1>
+        <div class="divider-container">
+            <div class="divider-line"></div>
+        </div>
+        <h1 class="w3-jumbo">
+            <span"><i>frontier!</i></span>
+        </h1>
+    </a>
 </header>
 
 <!-- Main Content -->
@@ -49,14 +34,12 @@
             <p>"Seeding the Frontier" was formulated by Roger Malina, Director of the Arts/Sci Lab and a close collaborator with Tom Linehan between 2012 and 2020 when Tom retired from UT Dallas.  The Co-curators of this Exhibit are Beverly Kleiber aka Reiser, Eric Fullbright, Andrew Blanton and Christine Malina.</p>
             <p>This website is a living archival presence of works of art of a group of artists pioneers whose work deserves to be remembered and built upon by future generations.</p>
             <p>If you are interested in participating in this documentation of an important era in the history of the digital arts, please get back to us at:</p>
-            <p>Eric Fulbright <a href="mailto:ericfulbright98@gmail.com">ericfulbright98@gmail.com</a><br>
-            Beverly Kleiber aka Reiser <a href="mailto:beverlykleiberart@gmail.com">beverlykleiberart@gmail.com</a></p>
+            <p>Beverly Kleiber aka Reiser <a href="mailto:beverlykleiberart@gmail.com">beverlykleiberart@gmail.com</a></p>
         </div>
     </div>
 
     <!-- Right Column - Artist Grid -->
     <div class="w3-col l8 m12 s12">
-        <h3>Artists presented in this Gallery</h3>
         <div class="artist-grid">
             <!-- Artist Cards - Repeat this block for each artist -->
             <div>
@@ -146,6 +129,18 @@
             </div>
 
             <div>
+                <a href="Linehan.html" class="w3-text-black" style="text-decoration: none;">
+                    <div class="w3-card w3-hover-shadow artist-card">
+                        <img src="img/Linehan.jpg" alt="Tom Linehan" style="width:100%">
+                        <div class="w3-container">
+                            <h3>Tom Linehan</h3>
+                            <p>Community Builder</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div>
                 <a href="Malina.html" class="w3-text-black" style="text-decoration: none;">
                     <div class="w3-card w3-hover-shadow artist-card">
                         <img src="img/Malina.jpg" alt="Roger Malina" style="width:100%">
@@ -187,9 +182,7 @@
                         <img src="img/Pallas.jpg" alt="Jim Pallas" style="width:100%">
                         <div class="w3-container">
                             <h3>Jim Pallas</h3>
-                            <p>One of the things that makes Jim Pallas unique is that in his work involving art and
-                                technology, there is focus on interactive conversation, produced in an inventive,
-                                wonderfully weird style of thought.</p>
+                            <p>Electro-Kinetic Sculpture</p>
                         </div>
                     </div>
                 </a>
@@ -225,9 +218,7 @@
                         <img src="img/Rath.jpg" alt="Alan Rath" style="width:100%">
                         <div class="w3-container">
                             <h3>Alan Rath</h3>
-                            <p>The impact of Rath&#39;s work has left an indelible mark on the fields of art, technology, and
-                                philosophy, challenging us to reconsider our understanding of consciousness and the
-                                nature of being.</p>
+                            <p>art, technology, and the nature of being.</p>
                         </div>
                     </div>
                 </a>

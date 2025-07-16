@@ -1,82 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Artist Name - Seeding The Frontier</title>
+    <title>Seeding The Frontier</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Navigation -->
-<div class="w3-bar w3-white w3-padding">
-    <a href="index.html" class="w3-bar-item w3-button">← Back to Gallery</a>
-</div>
-
-<!-- Artist Header -->
-<header class="w3-container w3-padding-32">
-    <div class="w3-row">
-        <div class="w3-col m4">
-            <img src="artist_image.jpg" alt="Artist Name" style="width:100%" class="w3-image">
+<!-- Header -->
+<header id="main-header" class="w3-container w3-padding-32 w3-white">
+    <a href="index.html">
+        <h1 class="w3-jumbo">
+            <span><i>seeding the</i></span>
+        </h1>
+        <div class="divider-container">
+            <div class="divider-line"></div>
         </div>
-        <div class="w3-col m8 w3-padding-left">
-            <h1>Artist Name</h1>
-            <p class="w3-large">Specialty / Focus Area</p>
-        </div>
-    </div>
+        <h1 class="w3-jumbo">
+            <span"><i>frontier!</i></span>
+        </h1>
+    </a>
 </header>
 
 <!-- Main Content -->
-<div class="w3-container w3-padding-32">
-    <!-- Biography Section -->
-    <div class="w3-row">
-        <div class="w3-col m12">
-            <h2>Biography</h2>
-            <p>Artist biography and background information goes here...</p>
-        </div>
-    </div>
+<div class="w3-row-padding">
+    
+    <!-- Left Column - About the Work -->
+    <div class="w3-col l4 m12 s12 w3-center">
+        <div class="w3-container w3-padding-2">
+            <h2>Artist Name</h2>
+         </div>
+      </div>
 
-    <!-- Artwork Section -->
-    <div class="w3-row-padding w3-padding-32">
-        <h2>Featured Works</h2>
-        
-        <!-- Artwork Item -->
-        <div class="w3-col l4 m6 s12">
-            <div class="w3-card">
-                <img src="artwork1.jpg" alt="Artwork Title" style="width:100%">
-                <div class="w3-container">
-                    <h3>Artwork Title</h3>
-                    <p>Year: XXXX</p>
-                    <p>Medium: Description of medium</p>
-                    <p>Description of the artwork and its significance...</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Additional artwork items can be added here -->
-    </div>
-
-    <!-- Artist Statement -->
-    <div class="w3-row">
-        <div class="w3-col m12">
-            <h2>Artist Statement</h2>
-            <p>Artist's statement about their work and philosophy...</p>
-        </div>
-    </div>
-
-    <!-- Legacy/Impact -->
-    <div class="w3-row">
-        <div class="w3-col m12">
-            <h2>Legacy and Impact</h2>
-            <p>Description of the artist's influence and contributions to the field...</p>
+    <!-- Right Column - Artist Grid -->
+    <div class="w3-col l8 m12 s12" style="padding-right: 50px;">
+        <div class="artist-work">
+            <!-- Artist Work and Biography -->
+             <p>Artist Biography</p>
+             <p>Artist Work</p>
+            
+            
         </div>
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-light-grey">
-    <p>© 2024 Seeding The Frontier Exhibition</p>
-</footer>
-
 </body>
-</html> 
+</html>
